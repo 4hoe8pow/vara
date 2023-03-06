@@ -1,0 +1,71 @@
+@startuml kabaddi-scorer
+Title Kabaddi-Model
+
+package TeamAggregate{
+  class Team{
+    - メンバー : Player[]
+    - 合計スコア : Score
+    + 選手登録(メンバー)
+    + 選手アウト()
+    + 選手復活()
+    + アンティメンバー取得()
+  }
+}
+package PlayerAggregate{
+  class Player{
+    - 氏名 : PlayerName
+    - 身長 : PlayerHeight
+    - 体重 : PlayerWeight
+    - 背番号 : PlayerNumber
+    - プレイアブル : PlayerStatus
+    + 選手登録(氏名, 身長, 体重, 背番号)
+  }
+}
+
+package KabbadiAggregate{
+class Kabbadi {
+    - ラウンド : Round
+    - アンティ : Player[]
+    - レイダー : Player
+    - 試合時間 : GameTime
+    - レイド : Raid
+    + レイド結果を取得する(サイクル数)
+    }
+  class GameTime{
+    - 残り時間 : GameTime
+    - 前半後半 : GameHalf
+  }
+
+}
+
+package RaidAggregate{
+  class Raid {
+    - 判定 : RaidResult
+    - 変動点数 : Score
+    - エンプティレイド回数 : EmptyRaid
+    + 点数を決定する()
+    + エンプティレイド回数を増やす(チーム)
+    + エンプティレイド回数をリセットする(チーム)
+  }
+
+
+  enum RaidResult {
+    - TackleOut
+    - SuperTacle
+    - LineOut
+    - CantOut
+    - ThirdRaidOut
+    - NotEntryBaulk
+    - Touch
+    - Empty
+    - BonusOnly
+    - TouchAndBonus
+  }
+}
+
+Player o.. Team
+Kabbadi <-left- Player
+Kabbadi <-- GameTime
+Raid -left-> Kabbadi
+Raid *.. RaidResult
+@enduml

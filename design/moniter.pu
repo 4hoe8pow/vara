@@ -1,0 +1,21 @@
+@startuml view
+hide empty description
+left to right direction
+
+state 画面遷移 {
+state "ガイド" as guide : 試合一覧と試合追加ボタン
+state "レコーディング" as r : 試合記録用画面
+state "ゲームメイク" as m : これから記録する試合のコンフィグ作成
+state "スコアラ" as s : 点数表示専用UI
+[*] -down-> guide
+guide --> プレーヤーマスタ: 設定
+guide --> チームマスタ: 設定
+guide -> m
+m --> r
+r -> guide : 完了
+r -> s : マルチウィンドウで操作
+}
+
+
+
+@enduml

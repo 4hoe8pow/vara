@@ -1,0 +1,31 @@
+@startuml kabaddi-scorer
+Title kabaddi
+
+left to right direction
+
+actor "レイダー" as r
+actor "アンティ" as a
+actor "入力者" as o
+
+package Raid {
+  usecase "タッチして帰還する" as r1
+  usecase "ボークラインを超える" as r2
+}
+
+package Game {
+  usecase レイド成功を記録する as g1
+  usecase エンプティレイドを記録する as g2
+  usecase レイド失敗を記録する as g3
+  usecase ボーナスポイントを記録する as g4
+  usecase スーパータックルを記録する as g5
+}
+
+r --> r1
+
+o -> g1
+o --> g2
+o --> g3
+o --> g4
+o --> g5
+
+@enduml
