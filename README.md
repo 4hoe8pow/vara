@@ -20,19 +20,16 @@
 とりあえず以下がうまくいってればOK.
 
 ```cmd
-$  ~/Desktop/sandbox/dharma
+
 $ rustc -V
 rustc 1.67.0 (fc594f156 2023-01-24)
 
-$  ~/Desktop/sandbox/dharma
 $ node -v
 v19.6.0
 
-$  ~/Desktop/sandbox/dharma
 $ yarn -v
 1.22.19
 
-$  ~/Desktop/sandbox/dharma
 $ cargo-tauri -V
 tauri-cli 1.2.3
 ```
