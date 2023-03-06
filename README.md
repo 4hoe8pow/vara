@@ -1,4 +1,7 @@
-# 開発環境の準備(コラボレーター)
+# 開発環境の準備
+
+コラボレーター用です.
+コントリビューターだとフォーク形式ですが, 招待されたコラボレータはここのブランチを直接好きにできます.
 
 1. Rust をセットアップ
 
@@ -17,19 +20,19 @@
 とりあえず以下がうまくいってればOK.
 
 ```cmd
-kustham@LAPTOP-0RPCGF9A MINGW64 ~/Desktop/sandbox/dharma
+$  ~/Desktop/sandbox/dharma
 $ rustc -V
 rustc 1.67.0 (fc594f156 2023-01-24)
 
-kustham@LAPTOP-0RPCGF9A MINGW64 ~/Desktop/sandbox/dharma
+$  ~/Desktop/sandbox/dharma
 $ node -v
 v19.6.0
 
-kustham@LAPTOP-0RPCGF9A MINGW64 ~/Desktop/sandbox/dharma
+$  ~/Desktop/sandbox/dharma
 $ yarn -v
 1.22.19
 
-kustham@LAPTOP-0RPCGF9A MINGW64 ~/Desktop/sandbox/dharma
+$  ~/Desktop/sandbox/dharma
 $ cargo-tauri -V
 tauri-cli 1.2.3
 ```
