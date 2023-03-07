@@ -1,54 +1,26 @@
-# 開発環境の準備
+# Dharma とは
 
-コラボレーター用です.
-コントリビューターだとフォーク形式ですが, 招待されたコラボレータはここのブランチを直接好きにできます.
+カバディは日本国内ではまだまだ発展途上の状態にある．
+有志の努力によって公式戦がLIVE配信される中，スコアラおよびスタッツデータの集計といったソリューションは未だ登場していない．
+Dharmaは，試合中にレイド結果を記録することで得点表とスタッツ集計を同時に実現する．
 
-1. Rust をセットアップ
+## 開発環境の構築
 
-<https://learn.microsoft.com/ja-jp/windows/dev-environment/rust/setup>
+マシンのOSは不問だが，仮想環境の構築にDockerが必要となっている．
+また，IDEは"Dev Container"を使用したいのでVS Codeに限定する．
 
-1. Tauri をインストール
+実際の工程は以下に従う．
 
-`cargo install tauri-cli`
+1. devcontainer.jsonを開く
+1. コマンドパレット(F1)で「reopen in container」
 
-1. yarn をインストール
+ビルド
 
-`npm install -g yarn`
+`yarn tauri build`
 
-## 確認
+立ち上げ
 
-とりあえず以下がうまくいってればOK.
-
-```cmd
-
-$ rustc -V
-rustc 1.67.0 (fc594f156 2023-01-24)
-
-$ node -v
-v19.6.0
-
-$ yarn -v
-1.22.19
-
-$ cargo-tauri -V
-tauri-cli 1.2.3
-```
-
-## ビルド
-
-1. リポジトリクローン
-
-`git clone git clone https://github.com/kustham/dharma`
-
-1. node_modules つくる
-
-`cd dharma && yarn`
-
-1. ビルドしてみる
-
-`yarn tauri build && yarn tauri dev`
-
-最初めちゃくちゃ長い. 8~9分くらい．
+`yarn tauri dev`
 
 ## データの取り扱い
 
