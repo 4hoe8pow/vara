@@ -13,12 +13,15 @@ Dharmaは，試合中にレイド結果を記録することで得点表とス�
 
 1. devcontainer.jsonを開く
 1. コマンドパレット(F1)で「reopen in container」
+1. git 権限
 
-ビルド
+`sudo chown -R qq.qq .git`
+
+1. ビルド
 
 `yarn tauri build`
 
-立ち上げ
+1. 立ち上げ
 
 `yarn tauri dev`
 
