@@ -3,7 +3,6 @@ FROM mcr.microsoft.com/devcontainers/rust:0-${VARIANT}
 
 ARG ID=20000
 ARG USER_NAME=qq
-ARG WORK_DIR=/home/qaqa/
 ARG GIT_NAME
 ARG GIT_EMAIL
 
@@ -14,14 +13,7 @@ RUN echo ${USER_NAME}:pass | chpasswd
 RUN echo "${USER_NAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/${USER_NAME}
 RUN chmod 0440 /etc/sudoers.d/${USER_NAME}
 RUN chmod -R ug+rwx /usr/local/
-
-WORKDIR ${WORK_DIR}
-RUN chown ${USER_NAME}:${USER_NAME} ${WORK_DIR}
 USER ${ID}
-
-# Git設定
-RUN git config --global user.email ${GIT_EMAIL}
-RUN git config --global user.name ${GIT_NAME}
 
 # Tauriに必要なライブラリ
 RUN sudo apt-get update
@@ -47,3 +39,8 @@ RUN sudo n latest
 
 # Tauri をインストール
 RUN cargo install tauri-cli
+
+# Git設定
+RUN git config --global user.email ${GIT_EMAIL}
+RUN git config --global user.name ${GIT_NAME}
+RUN sudo chown -R qq.qq /dharma/.git
