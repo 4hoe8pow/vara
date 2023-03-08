@@ -43,4 +43,6 @@ RUN cargo install tauri-cli
 # Git設定
 RUN git config --global user.email ${GIT_EMAIL}
 RUN git config --global user.name ${GIT_NAME}
-RUN sudo chown -R qq.qq /dharma/.git
+
+# TODO: gitディレクトリの権限設定
+# RUN sudo chown -R qq.qq /dharma/.git
