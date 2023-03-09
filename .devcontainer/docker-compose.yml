@@ -12,7 +12,7 @@ services:
           ID: 1500
       command: sleep infinity
       volumes:
-          - ../:/dharma:cached
+          - ../:/home/qq/dharma:cached
       links:
         - db
     db:

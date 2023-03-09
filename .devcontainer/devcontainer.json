@@ -2,7 +2,7 @@
 	"name": "HOTDOG",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "dharma",
-	"workspaceFolder": "/dharma",
+	"workspaceFolder": "/home/qq/dharma",
 	"forwardPorts": [
 		1420
 	],
