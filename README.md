@@ -9,19 +9,13 @@ Dharmaは，試合中にレイド結果を記録することで得点表とス�
 マシンのOSは不問だが，仮想環境の構築にDockerが必要となっている．
 また，IDEは"Dev Container"を使用したいのでVS Codeに限定する．
 
-実際の工程は以下に従う．
+コマンドパレット(F1)で「reopen in container」を選ぶとコンテナに繋がる．
 
-1. devcontainer.jsonを開く
-1. コマンドパレット(F1)で「reopen in container」
-1. git 権限
-
-`sudo chown -R qq.qq .git`
-
-1. ビルド
+### ビルド
 
 `yarn tauri build`
 
-1. 立ち上げ
+### 起動
 
 `yarn tauri dev`
 
