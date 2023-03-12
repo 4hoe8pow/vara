@@ -1,0 +1,53 @@
+Arguments: 
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add gen-mapping
+
+PATH: 
+  /vscode/vscode-server/bin/linux-x64/92da9481c0904c6adfe372c12da3b7748d74bdcb/bin/remote-cli:/usr/local/cargo/bin:/usr/local/cargo/bin:/usr/local/cargo/bin:/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/qq/.local/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  19.7.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EIO: i/o error, scandir '/dharma/node_modules/@ampproject/remapping/node_modules/@jridgewell/gen-mapping'
+
+npm manifest: 
+  {
+    "name": "dharma",
+    "version": "0.0.0",
+    "description": "dharma-scorer",
+    "scripts": {
+      "start": "vite",
+      "dev": "vite",
+      "build": "vite build",
+      "serve": "vite preview",
+      "tauri": "tauri"
+    },
+    "license": "MIT",
+    "devDependencies": {
+      "@tauri-apps/cli": "^1.2.2",
+      "@types/node": "^18.13.0",
+      "typescript": "^4.9.5",
+      "vite": "^4.1.1",
+      "vite-plugin-solid": "^2.5.0"
+    },
+    "dependencies": {
+      "@solidjs/router": "^0.7.0",
+      "@suid/icons-material": "^0.5.8",
+      "@suid/material": "^0.10.1",
+      "@suid/vite-plugin": "^0.1.2",
+      "@tauri-apps/api": "^1.2.0",
+      "solid-js": "^1.4.7"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
