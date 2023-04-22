@@ -7,7 +7,7 @@
     "distDir": "../out"
   },
   "package": {
-    "productName": "dharma",
+    "productName": "d_score",
     "version": "0.1.0"
   },
   "tauri": {
@@ -62,7 +62,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "Dharma",
+        "title": "D_score",
         "width": 800
       },
       {
