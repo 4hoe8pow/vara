@@ -1,1 +1,1 @@
-pub mod dharma_error;
+pub mod d_score_error;

@@ -1,7 +1,7 @@
 use thiserror::Error;
 
 #[derive(Error, Debug)]
-pub enum DharmaError {
+pub enum D_scoreError {
     #[error("TypeError: {0}")]
     TypeError(String),
     #[error("InternalServerError: {0}")]
@@ -10,12 +10,12 @@ pub enum DharmaError {
     DuplicationError(String),
 }
 
-impl DharmaError {
-    pub fn type_error(s: &str) -> DharmaError {
-        DharmaError::TypeError(s.to_string())
+impl D_scoreError {
+    pub fn type_error(s: &str) -> D_scoreError {
+        D_scoreError::TypeError(s.to_string())
     }
 
-    pub fn internal_server_error(s: &str) -> DharmaError {
-        DharmaError::InternalServerError(s.to_string())
+    pub fn internal_server_error(s: &str) -> D_scoreError {
+        D_scoreError::InternalServerError(s.to_string())
     }
 }

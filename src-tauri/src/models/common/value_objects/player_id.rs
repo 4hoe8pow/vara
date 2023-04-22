@@ -2,7 +2,7 @@ use anyhow::Result;
 use std::str::FromStr;
 use ulid::Ulid;
 
-use crate::models::common::errors::dharma_error::DharmaError;
+use crate::models::common::errors::d_score_error::D_scoreError;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PlayerId(String);
@@ -11,7 +11,7 @@ impl PlayerId {
     fn new(s: &str) -> Result<Self> {
         Ok(PlayerId(
             Ulid::from_string(s)
-                .map_err(|_| DharmaError::type_error("IDに誤りがあります"))?
+                .map_err(|_| D_scoreError::type_error("IDに誤りがあります"))?
                 .to_string(),
         ))
     }
