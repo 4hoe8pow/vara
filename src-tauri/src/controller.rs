@@ -10,11 +10,11 @@ use tauri::Runtime;
 
 /// Commitボタン対応コマンド
 #[tauri::command]
-fn score_update<R: Runtime>(
+pub fn score_update<R: Runtime>(
     app: tauri::AppHandle<R>,
     window: tauri::Window<R>,
 ) -> Result<(), String> {
-    
+
     Ok(())
 }
 
