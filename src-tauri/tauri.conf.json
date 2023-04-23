@@ -63,6 +63,7 @@
         "height": 600,
         "resizable": true,
         "title": "D_score",
+        "url" : "observer",
         "width": 800
       },
       {

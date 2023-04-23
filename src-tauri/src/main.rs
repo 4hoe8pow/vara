@@ -3,7 +3,7 @@ mod controller;
 mod infra;
 mod models;
 mod services;
-use crate::controller::{fetch_results_init, register_pre_game};
+use crate::controller::{fetch_results_init};
 use tauri::generate_handler;
 
 fn main() {

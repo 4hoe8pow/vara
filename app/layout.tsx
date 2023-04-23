@@ -1,4 +1,3 @@
-import './styles/globals.scss'
 
 export const metadata = {
   title: 'D Score',
