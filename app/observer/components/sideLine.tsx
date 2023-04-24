@@ -20,7 +20,7 @@ export default function SideLine() {
                     },
                 }}
             >
-                <Typography variant="h4">操作画面</Typography>
+                <Typography variant="h5">Terminal</Typography>
             </Box>
         </>
     )

@@ -2,8 +2,8 @@
 import { NextPage } from 'next'
 import { Box, TextField } from '@mui/material'
 import React from 'react'
-import CheckboxesGroup from './components/raidResultCheckBoxes'
-import Footer from './components/footer'
+import CheckboxesGroup from './components/checkBoxes'
+import CommitButton from './components/commitButton'
 import SideLine from './components/sideLine'
 
 const Observer: NextPage = (props) => {
@@ -13,7 +13,7 @@ const Observer: NextPage = (props) => {
             <TextField id="awayName" label="Away" variant="standard" />
             <SideLine />
             <CheckboxesGroup />
-            <Footer />
+            <CommitButton />
         </>
     )
 }

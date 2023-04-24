@@ -6,6 +6,7 @@ import FormGroup from '@mui/material/FormGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import FormHelperText from '@mui/material/FormHelperText'
 import Checkbox from '@mui/material/Checkbox'
+import SelectPoint from './selectPoint'
 
 export default function CheckboxesGroup() {
     const [state, setState] = React.useState({
@@ -22,25 +23,26 @@ export default function CheckboxesGroup() {
     }
 
     const { gilad, jason, antoine } = state
-    const raidError =
-        [gilad, jason, antoine].filter((v) => v).length !== 1
+    const raidError = [gilad, jason, antoine].filter((v) => v).length !== 1
 
     return (
         <Box sx={{ display: 'flex' }}>
             <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
                 <FormLabel component="legend">Succsess</FormLabel>
                 <FormGroup>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                error={raidError}
-                                checked={gilad}
-                                onChange={handleChange}
-                                name="gilad"
-                            />
-                        }
-                        label="Touch"
-                    />
+                    <Box>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    checked={gilad}
+                                    onChange={handleChange}
+                                    name="gilad"
+                                />
+                            }
+                            label="Touch"
+                        />
+                        <SelectPoint />
+                    </Box>
                     <FormControlLabel
                         control={
                             <Checkbox
