@@ -1,13 +1,13 @@
 [package]
-name = "app"
+name = "d_score"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "Kabaddi Scorer"
+authors = ["tokunaga"]
 license = ""
 repository = ""
-default-run = "app"
+default-run = "d_score"
 edition = "2021"
-rust-version = "1.59"
+rust-version = "1.56"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
