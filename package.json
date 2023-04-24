@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "export": "next export",
     "start": "next start",
@@ -25,6 +25,7 @@
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tauri-plugin-window-state-api": "github:tauri-apps/tauri-plugin-window-state",
     "typescript": "5.0.4"
   },
   "devDependencies": {

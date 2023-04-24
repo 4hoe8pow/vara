@@ -28,6 +28,7 @@ ulid = "1"
 chrono = { version = "^0.4", features = ["serde"] }
 futures = "*"
 more-di = "*"
+tauri-plugin-window-state = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "dev" }
 
 [features]
 # by default Tauri runs in production mode
