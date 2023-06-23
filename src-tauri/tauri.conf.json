@@ -1,22 +1,18 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "pnpm run build",
-    "beforeDevCommand": "pnpm run dev",
+    "beforeBuildCommand": "npm run build",
+    "beforeDevCommand": "npm run dev",
     "devPath": "http://localhost:3000",
     "distDir": "../out"
   },
   "package": {
-    "productName": "d_score",
+    "productName": "vara",
     "version": "0.1.0"
   },
   "tauri": {
     "allowlist": {
-      "all": true,
-      "shell": {
-        "all": false,
-        "open": true
-      }
+      "all": false
     },
     "bundle": {
       "active": true,
@@ -33,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.nisc",
+      "identifier": "com.tauri.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -59,19 +55,11 @@
     },
     "windows": [
       {
-        "label": "observer",
         "fullscreen": false,
-        "height": 600,
+        "height": 124,
         "resizable": true,
-        "title": "D_score",
-        "url" : "observer",
-        "width": 800
-      },
-      {
-        "label": "scorer",
         "title": "Kabaddi Scorer",
-        "url": "scorer",
-        "height": 90
+        "width": 800
       }
     ]
   }
