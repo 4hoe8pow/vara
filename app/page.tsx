@@ -4,6 +4,7 @@ import styles from './page.module.scss'
 import { useState } from 'react'
 import { useKey } from 'react-use'
 import { BsFillPersonFill } from 'react-icons/bs'
+import { useTimer } from 'react-timer-hook'
 
 const Scorer: NextPage = () => {
     const [hostScore, setHostScore] = useState(0)
@@ -15,14 +16,23 @@ const Scorer: NextPage = () => {
     useKey('H', () => setHostScore((p) => --p))
     useKey('a', () => setAwayScore((p) => ++p))
     useKey('A', () => setAwayScore((p) => --p))
-    useKey('y', () => setHost((n) => (n < 7 ? n + 1 : n)))
+    useKey('b', () => setHost((n) => (n < 7 ? n + 1 : n)))
     useKey('n', () => setHost((n) => (n > 0 ? n - 1 : n)))
-    useKey('q', () => setAway((n) => (n < 7 ? n + 1 : n)))
+    useKey('x', () => setAway((n) => (n < 7 ? n + 1 : n)))
     useKey('z', () => setAway((n) => (n > 0 ? n - 1 : n)))
+    useKey('p', () => pause())
+    useKey('t', () => resume())
 
     const renderIcons = (count: number) => {
         return Array.from({ length: count }, (_) => <BsFillPersonFill />)
     }
+    const time = new Date()
+    time.setSeconds(time.getSeconds() + 1200)
+
+    const { seconds, minutes, isRunning, start, pause, resume } = useTimer({
+        expiryTimestamp: time,
+        onExpire: () => console.warn('onExpire called'),
+    })
 
     return (
         <main className={styles.boardContainer}>
@@ -39,7 +49,7 @@ const Scorer: NextPage = () => {
                 {hostScore}
             </div>
             <div id={styles.gameTime} className={styles.time}>
-                20:00
+                {minutes}:{seconds}
             </div>
             <div id={styles.awayScore} className={styles.score}>
                 {awayScore}
