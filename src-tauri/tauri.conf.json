@@ -57,9 +57,17 @@
       {
         "fullscreen": false,
         "height": 124,
-        "resizable": true,
+        "resizable": false,
         "title": "Kabaddi Scorer",
         "width": 800
+      },
+      {
+        "fullscreen": false,
+        "height": 400,
+        "resizable": true,
+        "title": "Controller",
+        "width": 300,
+        "url": "/controller"
       }
     ]
   }
