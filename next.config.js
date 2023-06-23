@@ -1,14 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        appDir: true,
-    },
-    reactStrictMode: true,
-    // Note: This feature is required to use NextJS Image in SSG mode.
-    // See https://nextjs.org/docs/messages/export-image-api for different workarounds.
-    images: {
-        unoptimized: true,
-    },
+  output: 'export',
 }
 
 module.exports = nextConfig
