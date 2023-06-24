@@ -57,7 +57,7 @@
       {
         "label": "main",
         "fullscreen": false,
-        "height": 124,
+        "height": 123,
         "resizable": false,
         "title": "Kabaddi Scorer",
         "width": 800,

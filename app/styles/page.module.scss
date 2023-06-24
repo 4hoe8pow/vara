@@ -1,11 +1,12 @@
 .boardContainer {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 0.38fr 0.62fr 0.38fr;
+  grid-template-rows: 0.19fr 0.62fr 0.19fr;
   height: 100vh;
   object-fit: cover;
   text-align: center;
   justify-self: stretch;
+  align-items: center;
 
   #awayRaid {
     grid-row: 1;

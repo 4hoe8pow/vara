@@ -1,6 +1,6 @@
 'use client'
 import { NextPage } from 'next'
-import styles from './page.module.scss'
+import styles from './styles/page.module.scss'
 import { useEffect, useState } from 'react'
 import { useKey } from 'react-use'
 import { BsFillPersonFill } from 'react-icons/bs'
@@ -32,7 +32,7 @@ const Scorer: NextPage = () => {
     useKey('t', () => resume())
 
     const renderIcons = (count: number) => {
-        return Array.from({ length: count }, (_) => <BsFillPersonFill />)
+        return Array.from({ length: count }, (_, index) => <BsFillPersonFill key={`icon_${index}`} />)
     }
     const time = new Date()
     time.setSeconds(time.getSeconds() + 1200)
@@ -43,22 +43,22 @@ const Scorer: NextPage = () => {
     })
 
     useEffect(() => {
-        let unlisten: any
-        async function f() {
-            unlisten = await listen('updated_name', (message: { payload: MessagePayload }) => {
-                const { hostName, awayName } = message.payload
-                sethostName(hostName)
-                setawayName(awayName)
-            })
-        }
-        f()
+        let unlisten: () => void
+        ;(async () => {
+            unlisten = await listen(
+                'updated_name',
+                ({ payload: { hostName, awayName } }: { payload: MessagePayload }) => {
+                    sethostName(hostName)
+                    setawayName(awayName)
+                },
+            )
+        })()
 
         return () => {
-            if (unlisten) {
-                unlisten()
-            }
+            unlisten?.()
         }
     }, [])
+
     return (
         <main className={styles.boardContainer}>
             <div id={styles.hostRaid} className={styles.raidStatus}>
@@ -74,7 +74,7 @@ const Scorer: NextPage = () => {
                 {hostScore}
             </div>
             <div id={styles.gameTime} className={styles.time}>
-                {minutes}:{seconds}
+                {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
             </div>
             <div id={styles.awayScore} className={styles.score}>
                 {awayScore}
