@@ -108,3 +108,15 @@
   white-space: nowrap !important;
   border: 0 !important
 }
+
+:root {
+  --black: rgb(27, 22, 64);
+  --pink: rgb(217, 41, 138);
+  --gold: rgb(191, 145, 59);
+  --blue: rgb(36, 43, 166);
+  --purple: rgb(25, 22, 89);
+}
+
+.main {
+  background-color: rgba(27, 22, 64, 0.62);
+}

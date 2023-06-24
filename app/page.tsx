@@ -1,6 +1,6 @@
 'use client'
 import { NextPage } from 'next'
-import styles from './styles/page.module.scss'
+import styles from './styles/scorer.module.scss'
 import { useEffect, useState } from 'react'
 import { useKey } from 'react-use'
 import { BsFillPersonFill } from 'react-icons/bs'
