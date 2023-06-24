@@ -3,7 +3,6 @@
 
 mod cmd;
 use cmd::*;
-use tauri::{GlobalWindowEvent, Manager};
 
 fn main() {
     tauri::Builder::default()

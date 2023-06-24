@@ -7,6 +7,11 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { useTimer } from 'react-timer-hook'
 import { listen } from '@tauri-apps/api/event'
 
+interface MessagePayload {
+    hostName: string
+    awayName: string
+}
+
 const Scorer: NextPage = () => {
     const [hostName, sethostName] = useState('')
     const [awayName, setawayName] = useState('')
@@ -36,17 +41,22 @@ const Scorer: NextPage = () => {
         expiryTimestamp: time,
         onExpire: () => console.warn('onExpire called'),
     })
-    useEffect(() => {
-        const handleMessage = (message: any) => {
-            const { host_team, away_team } = message.payload
-            sethostName(host_team)
-            setawayName(away_team)
-        }
 
-        listen('team_state_updated', handleMessage)
+    useEffect(() => {
+        let unlisten: any
+        async function f() {
+            unlisten = await listen('updated_name', (message: { payload: MessagePayload }) => {
+                const { hostName, awayName } = message.payload
+                sethostName(hostName)
+                setawayName(awayName)
+            })
+        }
+        f()
 
         return () => {
-            listen('team_state_updated', handleMessage)
+            if (unlisten) {
+                unlisten()
+            }
         }
     }, [])
     return (

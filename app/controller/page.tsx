@@ -6,20 +6,23 @@ import { useState } from 'react'
 const Controller: NextPage = () => {
     const [hostName, sethostName] = useState<String>()
     const [awayName, setawayName] = useState<String>()
-    const updateTeamState = () => {
-        invoke('register_name', {
-            host_name: hostName,
-            away_name: awayName,
-        })
-    }
+
     return (
         <div>
             <div>host team</div>
             <input onChange={(e) => sethostName(e.target.value)} />
             <div>away team</div>
             <input onChange={(e) => setawayName(e.target.value)} />
-            <button type='submit' onClick={updateTeamState}>
-                確定
+            <button
+                type='submit'
+                onClick={async () =>
+                    await invoke('register_name', {
+                        hostName: hostName,
+                        awayName: awayName,
+                    })
+                }
+            >
+                Register
             </button>
         </div>
     )
