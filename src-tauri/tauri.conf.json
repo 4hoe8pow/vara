@@ -55,18 +55,21 @@
     },
     "windows": [
       {
+        "label": "main",
         "fullscreen": false,
         "height": 124,
         "resizable": false,
         "title": "Kabaddi Scorer",
-        "width": 800
+        "width": 800,
+        "url": "/"
       },
       {
+        "label": "sub",
         "fullscreen": false,
-        "height": 400,
+        "height": 555,
         "resizable": true,
-        "title": "Controller",
-        "width": 300,
+        "title": "Kabaddi Scorer",
+        "width": 400,
         "url": "/controller"
       }
     ]

@@ -1,12 +1,15 @@
 'use client'
 import { NextPage } from 'next'
 import styles from './page.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useKey } from 'react-use'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { useTimer } from 'react-timer-hook'
+import { listen } from '@tauri-apps/api/event'
 
 const Scorer: NextPage = () => {
+    const [hostName, sethostName] = useState('')
+    const [awayName, setawayName] = useState('')
     const [hostScore, setHostScore] = useState(0)
     const [awayScore, setAwayScore] = useState(0)
     const [host, setHost] = useState(7)
@@ -33,7 +36,19 @@ const Scorer: NextPage = () => {
         expiryTimestamp: time,
         onExpire: () => console.warn('onExpire called'),
     })
+    useEffect(() => {
+        const handleMessage = (message: any) => {
+            const { host_team, away_team } = message.payload
+            sethostName(host_team)
+            setawayName(away_team)
+        }
 
+        listen('team_state_updated', handleMessage)
+
+        return () => {
+            listen('team_state_updated', handleMessage)
+        }
+    }, [])
     return (
         <main className={styles.boardContainer}>
             <div id={styles.hostRaid} className={styles.raidStatus}>
@@ -43,7 +58,7 @@ const Scorer: NextPage = () => {
                 2nd Raid
             </div>
             <div id={styles.hostName} className={styles.teamName}>
-                foo
+                {hostName}
             </div>
             <div id={styles.hostScore} className={styles.score}>
                 {hostScore}
@@ -55,7 +70,7 @@ const Scorer: NextPage = () => {
                 {awayScore}
             </div>
             <div id={styles.awayName} className={styles.teamName}>
-                bar
+                {awayName}
             </div>
             <div id={styles.host} className={styles.members}>
                 {renderIcons(host)}
