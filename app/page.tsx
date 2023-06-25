@@ -6,6 +6,12 @@ import { useKey } from 'react-use'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { useTimer } from 'react-timer-hook'
 import { listen } from '@tauri-apps/api/event'
+import { Zen_Antique } from 'next/font/google'
+
+const zenAntique = Zen_Antique({
+    subsets: ['latin'],
+    weight: '400',
+})
 
 interface MessagePayload {
     hostName: string
@@ -67,7 +73,7 @@ const Scorer: NextPage = () => {
             <div id={styles.awayRaid} className={styles.raidStatus}>
                 2nd Raid
             </div>
-            <div id={styles.hostName} className={styles.teamName}>
+            <div id={styles.hostName} className={`${styles.teamName} ${zenAntique.className}`}>
                 {hostName}
             </div>
             <div id={styles.hostScore} className={styles.score}>
@@ -79,7 +85,7 @@ const Scorer: NextPage = () => {
             <div id={styles.awayScore} className={styles.score}>
                 {awayScore}
             </div>
-            <div id={styles.awayName} className={styles.teamName}>
+            <div id={styles.awayName} className={`${styles.teamName} ${zenAntique.className}`}>
                 {awayName}
             </div>
             <div id={styles.host} className={styles.members}>
