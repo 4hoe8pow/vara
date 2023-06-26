@@ -15,26 +15,32 @@ const zenAntique = Zen_Antique({
 })
 
 interface MessagePayload {
-    hostName: string
-    awayName: string
+    host: string
+    away: string
 }
 
 const Scorer: NextPage = () => {
-    const [hostName, sethostName] = useState('')
-    const [awayName, setawayName] = useState('')
-    const [hostScore, setHostScore] = useState(0)
-    const [awayScore, setAwayScore] = useState(0)
-    const [host, setHost] = useState(7)
-    const [away, setAway] = useState(7)
+    const [names, setNames] = useState({ host: '', away: '' })
+    const [scores, setScores] = useState({ host: 0, away: 0 })
+    const [members, setMembers] = useState({ host: 7, away: 7 })
 
-    useKey('h', () => setHostScore((point) => 1 + point))
-    useKey('H', () => setHostScore((point) => 1 - point))
-    useKey('a', () => setAwayScore((point) => 1 + point))
-    useKey('A', () => setAwayScore((point) => 1 - point))
-    useKey('b', () => setHost((n) => (n < 7 ? n + 1 : n)))
-    useKey('n', () => setHost((n) => (n > 0 ? n - 1 : n)))
-    useKey('x', () => setAway((n) => (n < 7 ? n + 1 : n)))
-    useKey('z', () => setAway((n) => (n > 0 ? n - 1 : n)))
+    const updateScore = (team: 'host' | 'away', delta: number) =>
+        setScores((prevScores) => ({ ...prevScores, [team]: prevScores[team] + delta }))
+
+    const updateMembers = (team: 'host' | 'away', delta: number) =>
+        setMembers((prevMembers) => ({
+            ...prevMembers,
+            [team]: Math.max(0, Math.min(prevMembers[team] + delta, 7)),
+        }))
+
+    useKey('h', () => updateScore('host', 1))
+    useKey('H', () => updateScore('host', -1))
+    useKey('a', () => updateScore('away', 1))
+    useKey('A', () => updateScore('away', -1))
+    useKey('b', () => updateMembers('host', 1))
+    useKey('n', () => updateMembers('host', -1))
+    useKey('x', () => updateMembers('away', 1))
+    useKey('z', () => updateMembers('away', -1))
     useKey('p', () => pause())
     useKey('t', () => resume())
 
@@ -57,9 +63,8 @@ const Scorer: NextPage = () => {
         ;(async () => {
             unlisten = await listen(
                 'updated_name',
-                ({ payload: { hostName, awayName } }: { payload: MessagePayload }) => {
-                    sethostName(hostName)
-                    setawayName(awayName)
+                ({ payload: { host, away } }: { payload: MessagePayload }) => {
+                    setNames({ host, away })
                 },
             )
         })()
@@ -88,25 +93,25 @@ const Scorer: NextPage = () => {
                 2nd Raid
             </div>
             <div id={styles.hostName} className={`${styles.teamName} ${zenAntique.className}`}>
-                {hostName}
+                {names.host}
             </div>
             <div id={styles.hostScore} className={styles.score}>
-                {hostScore}
+                {scores.host}
             </div>
             <div id={styles.gameTime} className={styles.time}>
                 {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
             </div>
             <div id={styles.awayScore} className={styles.score}>
-                {awayScore}
+                {scores.away}
             </div>
             <div id={styles.awayName} className={`${styles.teamName} ${zenAntique.className}`}>
-                {awayName}
+                {names.away}
             </div>
             <div id={styles.host} className={styles.members}>
-                {renderIcons(host)}
+                {renderIcons(members.host)}
             </div>
             <div id={styles.away} className={styles.members}>
-                {renderIcons(away)}
+                {renderIcons(members.away)}
             </div>
         </main>
     )

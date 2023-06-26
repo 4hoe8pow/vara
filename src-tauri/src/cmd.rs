@@ -10,16 +10,16 @@ pub(crate) struct GameState {
 
 #[tauri::command]
 pub(crate) async fn register_name(
-    host_name: String,
-    away_name: String,
+    host: String,
+    away: String,
     app_handle: tauri::AppHandle,
 ) -> Result<(), String> {
     app_handle
         .emit_all(
             "updated_name",
             json!({
-                "hostName": host_name,
-                "awayName": away_name,
+                "host": host,
+                "away": away,
             }),
         )
         .expect("Failed to emit event");
