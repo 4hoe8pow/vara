@@ -5,22 +5,22 @@ import { useState } from 'react'
 import styles from '../styles/controller.module.scss'
 
 const Controller: NextPage = () => {
-    const [hostName, sethostName] = useState<String>()
-    const [awayName, setawayName] = useState<String>()
+    const [host, sethost] = useState<String>()
+    const [away, setaway] = useState<String>()
 
     return (
         <div className={styles.controllerContainer}>
             <h2>Game Infomation</h2>
             <div>host team</div>
-            <input onChange={(e) => sethostName(e.target.value)} />
+            <input onChange={(e) => sethost(e.target.value)} />
             <div>away team</div>
-            <input onChange={(e) => setawayName(e.target.value)} />
+            <input onChange={(e) => setaway(e.target.value)} />
             <button
                 type='submit'
                 onClick={async () =>
                     await invoke('register_name', {
-                        hostName: hostName,
-                        awayName: awayName,
+                        host: host,
+                        away: away,
                     })
                 }
             >
