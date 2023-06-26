@@ -10,15 +10,26 @@
   background-color: rbga(var(--black), 0.5);
   opacity: 0.62;
 
-  #awayRaid {
+  #awayRaidStatus {
+    grid-row: 1;
+    grid-column: 3 / 6;
+  }
+
+  #hostRaidStatus {
+    grid-row: 1;
+    grid-column: 8 / 11;
+  }
+
+  #awayRaidIcon {
     grid-row: 1;
     grid-column: 1 / 3;
   }
 
-  #hostRaid {
+  #hostRaidIcon {
     grid-row: 1;
     grid-column: 11 / 13;
   }
+
 
   #awayName {
     grid-row: 2;
