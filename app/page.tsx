@@ -7,6 +7,7 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { useTimer } from 'react-timer-hook'
 import { listen } from '@tauri-apps/api/event'
 import { Zen_Antique } from 'next/font/google'
+import RectangleTwoToneIcon from '@mui/icons-material/RectangleTwoTone'
 
 const zenAntique = Zen_Antique({
     subsets: ['latin'],
@@ -26,10 +27,10 @@ const Scorer: NextPage = () => {
     const [host, setHost] = useState(7)
     const [away, setAway] = useState(7)
 
-    useKey('h', () => setHostScore((p) => ++p))
-    useKey('H', () => setHostScore((p) => --p))
-    useKey('a', () => setAwayScore((p) => ++p))
-    useKey('A', () => setAwayScore((p) => --p))
+    useKey('h', () => setHostScore((point) => 1 + point))
+    useKey('H', () => setHostScore((point) => 1 - point))
+    useKey('a', () => setAwayScore((point) => 1 + point))
+    useKey('A', () => setAwayScore((point) => 1 - point))
     useKey('b', () => setHost((n) => (n < 7 ? n + 1 : n)))
     useKey('n', () => setHost((n) => (n > 0 ? n - 1 : n)))
     useKey('x', () => setAway((n) => (n < 7 ? n + 1 : n)))
@@ -47,6 +48,9 @@ const Scorer: NextPage = () => {
         expiryTimestamp: time,
         onExpire: () => console.warn('onExpire called'),
     })
+
+    // レイドアイコンの配色名
+    const colors: Array<'success' | 'warning' | 'error'> = ['success', 'warning', 'error']
 
     useEffect(() => {
         let unlisten: () => void
@@ -67,10 +71,20 @@ const Scorer: NextPage = () => {
 
     return (
         <main className={styles.boardContainer}>
-            <div id={styles.hostRaid} className={styles.raidStatus}>
+            <div id={styles.hostRaidIcon} className={styles.raidIcon}>
+                {colors.map((color) => (
+                    <RectangleTwoToneIcon key={color} color={color} />
+                ))}
+            </div>
+            <div id={styles.awayRaidIcon} className={styles.raidIcon}>
+                {colors.map((color) => (
+                    <RectangleTwoToneIcon key={color} color={color} />
+                ))}
+            </div>
+            <div id={styles.hostRaidStatus} className={styles.raidStatus}>
                 1st Raid
             </div>
-            <div id={styles.awayRaid} className={styles.raidStatus}>
+            <div id={styles.awayRaidStatus} className={styles.raidStatus}>
                 2nd Raid
             </div>
             <div id={styles.hostName} className={`${styles.teamName} ${zenAntique.className}`}>

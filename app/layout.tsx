@@ -1,6 +1,8 @@
+'use client'
 import './styles/globals.scss'
 import { Inter } from 'next/font/google'
-
+import { ThemeProvider } from '@mui/material'
+import { varaTheme } from './theme'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -15,7 +17,9 @@ export default function RootLayout({
 }) {
     return (
         <html data-tauri-drag-region lang='ja'>
-            <body className={`${inter.className} main`}>{children}</body>
+            <ThemeProvider theme={varaTheme}>
+                <body className={`${inter.className} main`}>{children}</body>
+            </ThemeProvider>
         </html>
     )
 }
